@@ -46,6 +46,7 @@
             <li><a href="/users">Users</a></li>
             <% if current_user != nil %>
             <li><a href="/users/<%= current_user.id %>">My Photos</a></li>
+              <li><a href="/my_likes/">My Likes</a></li>
             <% end %>
           <li><a href="/rails/info">Sitemap</a></li>
         </ul>
