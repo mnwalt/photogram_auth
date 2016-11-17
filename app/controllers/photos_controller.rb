@@ -49,10 +49,11 @@ class PhotosController < ApplicationController
     save_status = @photo.save
 
     if save_status == true
-      redirect_to("/photos/#{@photo.id}", :notice => "Photo updated successfully.")
+      redirect_to(:back, :notice => "Photo updated successfully.")
     else
       render("photos/edit.html.erb")
     end
+
   end
 
   def destroy
