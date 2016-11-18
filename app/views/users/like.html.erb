@@ -7,7 +7,7 @@
           <h3 class="panel-title">
             <a href="/users/<% photo.user %>"><%= photo.user.username %></a>
             <small>
-              <%= time_ago_in_words(photo.created_at) %>
+              <%= time_ago_in_words(photo.created_at) %> ago
             </small>
           </h3>
         </div>
@@ -56,6 +56,17 @@
           <p>
           </p>
           <ul class="media-list">
+            <li class="media">
+              <div class="media-body">
+                <h6 class="media-heading">
+                  <a href="/users/<%= photo.user_id %>"><%= photo.user.username %></a>
+                  <small>
+                    <%= time_ago_in_words(photo.created_at) %>
+                  </small>
+                </h6>
+                <%= photo.caption %>
+              </div>
+            </li>
             <% photo.comments.each do |comment| %>
             <li class="media">
               <div class="media-body">
@@ -83,6 +94,16 @@
               </div>
             </li>
           </ul>
+          <div class="btn-group btn-group-justified">
+            <% if photo.user_id == current_user.id %>
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
